@@ -13,6 +13,7 @@ class ListBooks extends React.Component {
     })
   }
   render() {
+    console.log('books', this.state.books)
     return (
       <div className="list-books">
         <div className="list-books-title">

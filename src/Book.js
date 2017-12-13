@@ -7,7 +7,9 @@ const Book = ({ book }) => {
       <div className="book-top">
         <div
           className="book-cover"
-          style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+          style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
+
+        </div>
       <ShelfControl />
       </div>
       <div className="book-title">{book.title}</div>
