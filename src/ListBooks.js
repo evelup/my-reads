@@ -12,8 +12,14 @@ class ListBooks extends React.Component {
       this.setState({ books })
     })
   }
+  handleChange = e => {
+    BooksAPI.getAll().then(books => {
+      this.setState({ books })
+    })
+  };
+
   render() {
-    console.log('books', this.state.books)
+    // console.log('books', this.state.books)
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -22,14 +28,17 @@ class ListBooks extends React.Component {
         <div className="list-books-content">
           <div>
             <BookShelf
+              onChange={this.handleChange}
               label="Currently Reading"
               books={this.state.books.filter((book) => book.shelf === 'currentlyReading')}
             />
             <BookShelf
+              onChange={this.handleChange}
               label="Want to Read"
               books={this.state.books.filter((book) => book.shelf === 'wantToRead')}
             />
             <BookShelf
+              onChange={this.handleChange}
               label="Read"
               books={this.state.books.filter((book) => book.shelf === 'read')}
             />
