@@ -24,8 +24,6 @@ class Book extends React.Component {
 
   render () {
     const { book } = this.props;
-
-    // console.log('book/shelf', book.title, ',',  book.shelf);
     return (
       <div className="book">
         <div className="book-top">

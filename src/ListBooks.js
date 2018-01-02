@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
-import BookShelf from './BookShelf';
+import Shelf from './Shelf';
 
 class ListBooks extends React.Component {
   state = {
@@ -19,7 +19,6 @@ class ListBooks extends React.Component {
   };
 
   render() {
-    // console.log('books', this.state.books)
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -27,17 +26,17 @@ class ListBooks extends React.Component {
         </div>
         <div className="list-books-content">
           <div>
-            <BookShelf
+            <Shelf
               onChange={this.handleChange}
               label="Currently Reading"
               books={this.state.books.filter((book) => book.shelf === 'currentlyReading')}
             />
-            <BookShelf
+            <Shelf
               onChange={this.handleChange}
               label="Want to Read"
               books={this.state.books.filter((book) => book.shelf === 'wantToRead')}
             />
-            <BookShelf
+            <Shelf
               onChange={this.handleChange}
               label="Read"
               books={this.state.books.filter((book) => book.shelf === 'read')}
@@ -46,7 +45,6 @@ class ListBooks extends React.Component {
         </div>
         <div className="open-search">
           <Link
-            // onClick={() => this.setState({ showSearchPage: true })}
             to="/search"
           >
             Add a book
