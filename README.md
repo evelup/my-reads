@@ -14,7 +14,7 @@ This is final assessment project for Udacity's React Fundamentals course.
 ## Running
 ### Installing dependencies
 ```
-$ npm install
+npm install
 ```
 
 ### Running server
