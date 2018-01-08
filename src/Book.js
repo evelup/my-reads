@@ -15,21 +15,26 @@ class Book extends React.Component {
   }
 
   handleShelfUpdate = e => {
-    BooksAPI.update(this.props.book, e.target.value)
+    BooksAPI.update(this.props.book, e.target.value).then(()=> {
+      if (this.props.onChange) {
+        this.props.onChange();
+      }
+    });
     this.setState({ shelf: e.target.value});
-    if (this.props.onChange) {
-      this.props.onChange();
-    }
   };
 
   render () {
     const { book } = this.props;
+    let backgroundImage;
+    if (book.imageLinks) {
+      backgroundImage = `url(${book.imageLinks.thumbnail})`
+    }
     return (
       <div className="book">
         <div className="book-top">
           <div
             className="book-cover"
-            style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
+            style={{ width: 128, height: 193, backgroundImage }}>
 
           </div>
           <ShelfControl
