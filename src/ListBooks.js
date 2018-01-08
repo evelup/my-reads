@@ -19,6 +19,23 @@ class ListBooks extends React.Component {
   };
 
   render() {
+    const shelves = [
+      {
+        id: 'currentlyReading',
+        label: 'Currently Reading',
+        books: this.state.books.filter(book => book.shelf === 'currentlyReading')
+      },
+      {
+        id: 'wantToRead',
+        label: 'Want to Read',
+        books: this.state.books.filter(book => book.shelf === 'wantToRead')
+      },
+      {
+        id: 'read',
+        label: 'Read',
+        books: this.state.books.filter(book => book.shelf === 'read')
+      },
+    ]
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -26,21 +43,31 @@ class ListBooks extends React.Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Shelf
-              onChange={this.handleChange}
-              label="Currently Reading"
-              books={this.state.books.filter((book) => book.shelf === 'currentlyReading')}
-            />
-            <Shelf
-              onChange={this.handleChange}
-              label="Want to Read"
-              books={this.state.books.filter((book) => book.shelf === 'wantToRead')}
-            />
-            <Shelf
-              onChange={this.handleChange}
-              label="Read"
-              books={this.state.books.filter((book) => book.shelf === 'read')}
-            />
+            {shelves.map(shelf => {
+              return (
+                <Shelf
+                  key={shelf.id}
+                  label={shelf.label}
+                  books={shelf.books}
+                  onChange={this.handleChange}
+                />
+              )
+            })}
+            {/*<Shelf*/}
+              {/*onChange={this.handleChange}*/}
+              {/*label="Currently Reading"*/}
+              {/*books={this.state.books.filter((book) => book.shelf === 'currentlyReading')}*/}
+            {/*/>*/}
+            {/*<Shelf*/}
+              {/*onChange={this.handleChange}*/}
+              {/*label="Want to Read"*/}
+              {/*books={this.state.books.filter((book) => book.shelf === 'wantToRead')}*/}
+            {/*/>*/}
+            {/*<Shelf*/}
+              {/*onChange={this.handleChange}*/}
+              {/*label="Read"*/}
+              {/*books={this.state.books.filter((book) => book.shelf === 'read')}*/}
+            {/*/>*/}
           </div>
         </div>
         <div className="open-search">
